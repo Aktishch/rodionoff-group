@@ -31,6 +31,7 @@
   var loader = _.template(require('./components/loader.html').default)({icon})
   var preloader = require('./components/preloader.html').default
   var error = _.template(require('./components/error.html').default)
+  var title = _.template(require('./components/title.html').default)
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, loader, preloader})
   var footer = _.template(require('./includes/footer.html').default)({data, picture, loader})
 %>
@@ -67,7 +68,9 @@
     <ul class="flex flex-col gap-1.5 font-bold sm:text-lg lg:text-xl mb-24 anim anim-up duration-500 delay-100" data-anim>
       <% _.forEach((primal), (item) => { %>
       <li class="flex items-center">
-        <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block shrink-0 w-3 sm:w-4 mr-3 sm:mr-6', data: null}) %>
+        <div class="shrink-0 w-3 sm:w-4 mr-3 sm:mr-6">
+          <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
         <%= item %>
       </li>
       <% }) %>
@@ -107,7 +110,7 @@
   }
 ] %>
 
-<section class="container relative overflow-hidden" id="about">
+<section class="container relative sm:overflow-hidden" id="about">
   <div class="absolute inset-0 bg-grey">
     <%= loader %>
     <picture>
@@ -128,7 +131,7 @@
     </div>
     <div class="relative flex flex-col items-start sm:items-stretch gap-5 sm:gap-10 lg:gap-16">
       <% _.forEach((about), (item) => { %>
-      <div class="sm:w-max sm:even:ml-auto anim odd:anim-right even:anim-left duration-500" data-anim>
+      <div class="sm:w-max sm:even:ml-auto anim anim-right sm:odd:anim-right sm:even:anim-left duration-500" data-anim>
         <div class="card bg-transparent gradient-glass backdrop-blur-sm shadow-2xl border border-solid border-white/20">
           <div class="card-content py-3 sm:py-5 px-5 sm:px-8 lg:px-10">
             <h3 class="font-black text-3xl sm:text-4xl lg:text-[40px] lg:leading-tight uppercase tracking-wider"><%= item.title %></h3>
@@ -137,6 +140,164 @@
         </div>
       </div>
       <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- В каких ситуациях мы помогаем? -->
+
+<section class="container relative">
+  <div class="absolute top-64 md:top-72 right-0 h-[610px] md:h-auto md:-bottom-44 w-44 md:w-96 bg-grey">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/situations-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+      <source srcset="img/pictures/situations-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <source srcset="img/pictures/situations-bg-mobile.webp" type="image/webp">
+      <img class="image" draggable="false" loading="lazy" src="img/pictures/situations-bg-mobile.jpg" alt="">
+    </picture>
+  </div>
+  <div class="relative">
+    <%= title({text: 'В каких ситуациях мы помогаем?', className: 'mb-8 sm:mb-10 lg:12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-7 lg:gap-10">
+      <% for (var i = 0; i < 6; i++) { %>
+      <div class="anim anim-increase duration-700 ease-linear" data-anim>
+        <div class="card shadow-2xl group/accordion" data-accordion data-close-click>
+          <div class="card-content p-5">
+            <button class="text-left flex md:flex-col items-center md:items-stretch justify-between md:justify-stretch md:gap-6 md:pointer-events-none" data-accordion-toggle>
+              <div class="order-2 md:order-1 md:ml-auto">
+                <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-7xl', data: null}) %>
+              </div>
+              <h3 class="font-bold sm:text-lg lg:text-xl gradient-text order-1 md:order-2">
+                Оспаривание актов, требований и решений о начислении налогов
+              </h3>
+            </button>
+            <div class="md:group-[[data-accordion]]/accordion:!h-auto" data-accordion-content>
+              <p class="pt-6 text-sm sm:text-base">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- В чем наша уникальность? -->
+
+<% var uniqueness = [
+  {
+    id: 'experience',
+    title: 'Опыт работы',
+    text: 'Практики, которые знают, как общаться с налоговой и судами, сдавать отчеты и успешно проходить проверки. <br> Юристы и специалисты, в том числе, с многолетним опытом работы в УФНС.'
+  },
+  {
+    id: 'knowledge',
+    title: 'Знаем больше других',
+    text: 'Ежедневно отслеживаем изменения в НК РФ и судебную практику для формирования наиболее эффективных стратегий решения проблем.'
+  },
+  {
+    id: 'complexity',
+    title: 'Решаем сложные и невозможные задачи',
+    text: 'Беремся за ситуации, где другие разводят руками. Знаем, как действовать и защитить российского предпринимателя.'
+  }
+] %>
+
+<section class="container relative">
+  <%= title({text: 'В чем наша уникальность?', className: 'mb-8 sm:mb-10 lg:12 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-7 lg:gap-10">
+    <% _.forEach((uniqueness), (item) => { %>
+    <div class="anim anim-increase duration-700 ease-linear" data-anim>
+      <div class="card gradient-main text-white shadow-2xl z-10">
+        <div class="absolute -top-2 md:top-1 -right-1 md:-right-5">
+          <%= icon({id: item.id, className: 'icon opacity-10 text-[110px] md:text-[140px]', data: null}) %>
+        </div>
+        <div class="card-content p-5 relative">
+          <h3 class="font-extrabold text-xl sm:text-2xl mb-16 sm:mb-20 lg:mb-28 pr-24 md:pr-20"><%= item.title %></h3>
+          <p class="sm:text-xl md:mt-auto"><%= item.text %></p>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- Слышим. Находим решение. Действуем! -->
+
+<% var stages = [
+  {
+    margin: null,
+    src: 'img/pictures/1',
+    title: 'Консультация',
+    text: 'Проводим анализ ситуации, определяем потенциальные риски и формируем план действий. <br> По итогам вводной консультации вы получите основные ответы на вопросы и оцените варианты решений.'
+  },
+  {
+    margin: 'lg:ml-auto lg:-mt-36 xl:-mt-60',
+    src: 'img/pictures/2',
+    title: 'Защита ваших интересов',
+    text: 'Реализуем наиболее эффективную стратегию действий в максимально сжатые сроки.'
+  },
+  {
+    margin: 'lg:mx-auto',
+    src: 'img/pictures/3',
+    title: 'Остаемся на связи',
+    text: 'Уведомляем вас обо всех действиях и изменениях в процессе. <br> Предоставляем еженедельные отчеты.'
+  }
+] %>
+
+<section class="container relative">
+  <div class="absolute top-0 left-0 md:bottom-0 h-[655px] md:h-auto w-44 md:w-72 bg-grey">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/stages-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+      <source srcset="img/pictures/stages-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <source srcset="img/pictures/stages-bg-mobile.webp" type="image/webp">
+      <img class="image" draggable="false" loading="lazy" src="img/pictures/stages-bg-mobile.jpg" alt="">
+    </picture>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Слышим. Находим решение. Действуем!', className: 'mb-8 sm:mb-10 lg:12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="lg:pl-12 flex mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500" data-anim>
+      <div class="shrink-0 w-3 sm:w-4 mr-3 sm:mr-6">
+        <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <p class="sm:text-left lg:text-xl">
+        Мы сделали процесс решения проблем с налоговой службой предельно комфортным для Клиента.
+        <br>
+        Вы просто рассказываете о вашей задаче и компании – все остальное делаем мы.
+      </p>
+    </div>
+    <div class="flex justify-between gap-5">
+      <div class="w-5 shrink-0 lg:hidden">
+        <%= picture({src: 'img/pictures/arrow', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="flex flex-col gap-5 sm:gap-10 lg:gap-24 grow">
+        <% _.forEach((stages), (item, key) => { %>
+        <div class="relative w-full lg:max-w-[460px] <%= item.margin %>">
+          <% if (key === 0) { %>
+          <div class="hidden lg:block absolute top-32 xl:top-10 left-full w-[375px] clip-path clip-path-right duration-1000 ease-linear" data-anim>
+            <%= picture({src: 'img/pictures/line-first', format: 'svg', className: 'block w-full', data: null}) %>
+          </div>
+          <% } else if (key === 1) { %>
+          <div class="hidden lg:block absolute top-24 right-full w-[164px] clip-path clip-path-left duration-1000 ease-linear" data-anim>
+            <%= picture({src: 'img/pictures/line-last', format: 'svg', className: 'block w-full', data: null}) %>
+          </div>
+          <% } %>
+          <div class="anim anim-fade duration-500" data-anim>
+            <div class="card shadow-2xl">
+              <div class="absolute -top-2 sm:top-0 -right-2 w-[74px] sm:w-20">
+                <%= picture({src: item.src, format: 'svg', className: 'block w-full', data: null}) %>
+              </div>
+              <div class="card-content relative p-5">
+                <h3 class="text-xl sm:text-2xl font-extrabold gradient-text mb-7 sm:mb-10 lg:mb-14 pr-20"><%= item.title %></h3>
+                <p class="sm:text-lg lg:text-xl"><%= item.text %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
     </div>
   </div>
 </section>

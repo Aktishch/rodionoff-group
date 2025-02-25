@@ -22,7 +22,7 @@ import waved from './ts/waved'
 // import movement from './ts/movement'
 // import inverted from './ts/inverted'
 // import listing from './ts/listing'
-// import accordion from './ts/accordion'
+import accordion from './ts/accordion'
 // import formatBg from './ts/format-bg'
 // import parallax from './ts/parallax'
 // import filtering from './ts/filtering'
@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   // movement()
   // inverted()
   // listing()
-  // accordion()
+  accordion()
   // formatBg()
   // parallax()
   // filtering()
