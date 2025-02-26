@@ -1,5 +1,5 @@
-// import fancybox from './ts/fancybox'
-// import sliderSwiper from './ts/slider-swiper'
+import fancybox from './ts/fancybox'
+import sliderSwiper from './ts/slider-swiper'
 // import yandexMap from './ts/yandex-map'
 // import airDatepicker from './ts/air-datepicker'
 // import smoothScroll from './ts/smooth-scroll'
@@ -29,15 +29,15 @@ import accordion from './ts/accordion'
 // import outNumber from './ts/out-number'
 // import writeText from './ts/write-text'
 // import fileList from './ts/file-list'
-// import submitHandler from './ts/submit-handler'
+import submitHandler from './ts/submit-handler'
 // import dataSave from './ts/data-save'
 // import imagePreview from './ts/image-preview'
 // import copy from './ts/copy'
 // import cookie from './ts/cookie'
 // import combination from './ts/combination'
 // import canvasRendering from './ts/canvas-rendering'
-// import inputs from './ts/inputs'
-// import phoneMask from './ts/phone-mask'
+import inputs from './ts/inputs'
+import phoneMask from './ts/phone-mask'
 // import password from './ts/password'
 // import quantity from './ts/quantity'
 // import range from './ts/range'
@@ -53,14 +53,14 @@ import accordion from './ts/accordion'
 // import game from './ts/game'
 import preloader from './ts/preloader'
 
-// import '@fancyapps/ui/dist/fancybox/fancybox.css'
-// import 'swiper/css/bundle'
+import '@fancyapps/ui/dist/fancybox/fancybox.css'
+import 'swiper/css/bundle'
 // import 'air-datepicker/air-datepicker.css'
 import './scss/main.scss'
 
 window.addEventListener('DOMContentLoaded', ((): void => {
-  // fancybox()
-  // sliderSwiper()
+  fancybox()
+  sliderSwiper()
   // yandexMap()
   // airDatepicker()
   currentTab()
@@ -90,15 +90,15 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   // outNumber()
   // writeText()
   // fileList()
-  // submitHandler()
+  submitHandler()
   // dataSave()
   // imagePreview()
   // copy()
   // cookie()
   // combination()
   // canvasRendering()
-  // inputs()
-  // phoneMask()
+  inputs()
+  phoneMask()
   // password()
   // quantity()
   // range()

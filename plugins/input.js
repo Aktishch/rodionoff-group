@@ -29,6 +29,9 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '&:focus': {
         boxShadow: '0 0 0 1px var(--tw-input-color)',
       },
+      '&::placeholder': {
+        color: 'var(--tw-input-color)',
+      },
       '&:disabled': {
         pointerEvents: 'none',
         opacity: 0.5,
