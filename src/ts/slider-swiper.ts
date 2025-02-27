@@ -59,7 +59,6 @@ export const createСasesSlider = (): void => {
     cardsEffect: {
       perSlideOffset: 8,
       rotate: false,
-      slideShadows: false,
     },
     breakpoints: {
       [media.lg]: {

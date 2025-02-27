@@ -22,7 +22,7 @@ export const formSubmitHandler = (event: Event): void => {
       const requestUrl: string = './ajax/submit-handler.php'
 
       submitBtn.disabled = true
-      dialog.notClosing('./dialogs/dialog-preloader.html')
+      dialog.notClosing('./dialogs/dialog-preloader.php')
 
       fetch(requestUrl, {
         method: 'POST',
@@ -34,8 +34,8 @@ export const formSubmitHandler = (event: Event): void => {
         .then((response): void => {
           dialog.close()
           response.status
-            ? dialog.open('./dialogs/dialog-success.html')
-            : dialog.open('./dialogs/dialog-error.html')
+            ? dialog.open('./dialogs/dialog-success.php')
+            : dialog.open('./dialogs/dialog-error.php')
           form.reset()
           submitBtn.disabled = false
         })

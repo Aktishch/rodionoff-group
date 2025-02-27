@@ -1,6 +1,6 @@
 <%
   var data = {
-    title: 'Иконки',
+    title: '404',
     status: false,
     nav: [
       {
@@ -38,17 +38,16 @@
 
 <!-- <%= data.title %> -->
 
-<% var icons = ['loader', 'burger', 'telephone', 'close', 'arrow-left', 'arrow-right', 'experience', 'knowledge', 'complexity', 'lightning'] %>
-
 <section class="container flex items-center justify-center grow">
-  <ul class="grid w-full grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-    <% _.forEach((icons), (item) => { %>
-    <li class="flex items-center">
-      <%= icon({id: item, className: 'icon text-base mr-2', data: false}) %>
-      id: <%= item %>
-    </li>
-    <% }) %>
-  </ul>
+  <div class="flex flex-col items-center justify-center text-center w-full sm:max-w-[340px]">
+    <h1 class="font-black text-9xl sm:text-[155px] sm:leading-none">
+      404
+    </h1>
+    <p class="text-7xl sm:text-[80px] mb-10 sm:mb-16 sm:leading-none font-thin">
+      ошибка
+    </p>
+    <a class="w-full text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" draggable="false" href="/">На главную</a>
+  </div>
 </section>
 
 <%= footer %>

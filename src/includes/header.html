@@ -20,28 +20,29 @@
 
     <!-- Прелоадер -->
 
-    <div class="fixed inset-0 z-50 flex flex-col items-center justify-center duration-500 bg-white" data-preloader>
+    <div class="fixed inset-0 z-50 flex flex-col items-center justify-center duration-500 delay-200 bg-white" data-preloader>
       <%= preloader %>
     </div>
 
+    <% if (data.status) { %>
     <!-- Шапка документа -->
 
-    <header class="container fixed top-0 left-0 right-0 z-30 flex items-center justify-between bg-white bg-opacity-0 gap-5 pt-5 lg:pt-16 xl:pt-20 pb-5 duration-300" data-header>
-      <button class="btn btn-primary rounded text-black lg:hidden" data-sidebar-open="menu" data-waved="dark">
+    <header class="container fixed top-0 left-0 right-0 z-30 flex items-center justify-between gap-5 pt-5 pb-5 duration-300 bg-white bg-opacity-0 lg:pt-10 xl:pt-20" data-header>
+      <button class="text-black rounded btn btn-primary lg:hidden" data-sidebar-open="menu" data-waved="dark">
         <%= icon({id: 'burger', className: 'icon text-3xl', data: null}) %>
       </button>
       <a class="w-[84px] sm:w-28 lg:w-32 shrink-0" data-waved="light" draggable="false" href="/">
         <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
       </a>
-      <nav class="hidden lg:flex items-center gap-8 xl:gap-11">
+      <nav class="items-center hidden gap-8 lg:flex xl:gap-11">
         <% _.forEach((data.nav), (item) => { %>
-        <a class="btn font-normal hover:text-primary hover:bg-transparent rounded" <%= item.href !== null ? 'data-scroll' : null %> data-waved="dark" draggable="false" href="<%= item.href %>"><%= item.text %></a>
+        <a class="p-1 font-normal rounded btn hover:text-primary hover:bg-transparent" <%= item.href !== null ? 'data-scroll' : null %> data-waved="dark" draggable="false" href="<%= item.href %>"><%= item.text %></a>
         <% }) %>
       </nav>
-      <a class="size-8 shrink-0 rounded-lg btn btn-primary btn-fill btn-gradient sm:hidden" data-waved="light" draggable="false" href="tel: +7-999-999-99-99">
+      <a class="rounded-lg size-8 shrink-0 btn btn-primary btn-fill btn-gradient sm:hidden" data-waved="light" draggable="false" href="tel: +7-999-999-99-99">
         <%= icon({id: 'telephone', className: 'icon text-2xl', data: null}) %>
       </a>
-      <a class="btn btn-primary text-lg lg:text-xl font-bold text-black rounded hidden sm:flex" data-waved="dark" draggable="false" href="tel: +7-999-999-99-99">+7-999-999-99-99</a>
+      <a class="hidden text-lg font-bold text-black rounded btn btn-primary lg:text-xl sm:flex" data-waved="dark" draggable="false" href="tel: +7-999-999-99-99">+7-999-999-99-99</a>
     </header>
 
     <!-- Меню -->
@@ -49,20 +50,39 @@
     <div class="fixed inset-0 z-40 bg-black/50 duration-100 group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="lg" id="menu">
       <div class="flex flex-col bg-white overflow-auto w-full pt-5 px-4 pb-10 max-w-[375px] h-full duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
         <div class="flex items-center justify-between gap-5 mb-10">
-          <button class="btn btn-primary rounded text-black" data-sidebar-close="menu" data-waved="dark">
+          <button class="text-black rounded btn btn-primary" data-sidebar-close="menu" data-waved="dark">
             <%= icon({id: 'close', className: 'icon text-3xl', data: null}) %>
           </button>
           <a class="w-[84px] shrink-0" data-waved="light" draggable="false" href="/">
             <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
           </a>
-          <a class="size-8 shrink-0 rounded-lg btn btn-primary btn-fill btn-gradient" data-waved="light" draggable="false" href="tel: +7-999-999-99-99">
+          <a class="rounded-lg size-8 shrink-0 btn btn-primary btn-fill btn-gradient" data-waved="light" draggable="false" href="tel: +7-999-999-99-99">
             <%= icon({id: 'telephone', className: 'icon text-2xl', data: null}) %>
           </a>
         </div>
         <nav class="flex flex-col items-start gap-8 mb-10">
           <% _.forEach((data.nav), (item) => { %>
-          <a class="btn font-normal hover:text-primary hover:bg-transparent rounded" <%= item.href !== null ? 'data-scroll' : null %> data-waved="dark" draggable="false" href="<%= item.href %>"><%= item.text %></a>
+          <a class="font-normal rounded btn hover:text-primary hover:bg-transparent" <%= item.href !== null ? 'data-scroll' : null %> data-waved="dark" draggable="false" href="<%= item.href %>"><%= item.text %></a>
           <% }) %>
         </nav>
+        <div class="flex flex-col items-start gap-5 mt-auto">
+          <a class="text-left text-black rounded-lg btn btn-primary font-base" data-waved="dark" draggable="false" href="tel: +7-495-133-03-13">
+            <%= picture({src: 'img/pictures/phone', format: 'svg', className: 'icon text-3xl mr-3', data: null}) %>
+            +7-495-133-03-13
+          </a>
+          <a class="text-left text-black rounded-lg btn btn-primary font-base" data-waved="dark" draggable="false" href="" target="_blank">
+            <%= picture({src: 'img/pictures/website', format: 'svg', className: 'icon text-3xl mr-3', data: null}) %>
+            rodionoff.biz
+          </a>
+          <a class="text-left text-black rounded-lg btn btn-primary font-base" data-waved="dark" draggable="false" href="mailto: ivan@rodionoff.biz">
+            <%= picture({src: 'img/pictures/mail', format: 'svg', className: 'icon text-3xl mr-3', data: null}) %>
+            ivan@rodionoff.biz
+          </a>
+          <a class="text-left text-black rounded-lg btn btn-primary font-base" data-waved="dark" draggable="false" href="" target="_blank">
+            <%= picture({src: 'img/pictures/telegram', format: 'svg', className: 'icon text-3xl mr-3', data: null}) %>
+            +7-999-999-99-99
+          </a>
+        </div>
       </div>
     </div>
+    <% } %>

@@ -33,7 +33,7 @@
   var error = _.template(require('./components/error.html').default)
   var title = _.template(require('./components/title.html').default)
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, loader, preloader})
-  var footer = _.template(require('./includes/footer.html').default)({data, picture, loader})
+  var footer = _.template(require('./includes/footer.html').default)({data, picture})
 %>
 
 <%= header %>
@@ -46,7 +46,7 @@
   'Оспариваем решения после проверок'
 ] %>
 
-<section class="container relative pt-44 sm:pt-64 xl:pt-80 sm:pb-0">
+<section class="container relative pt-44 xl:pt-80 sm:pb-0">
   <div class="container absolute inset-0 py-0 overflow-hidden bg-grey">
     <%= loader %>
     <picture>
@@ -65,7 +65,7 @@
     <h1 class="text-4xl/tight sm:text-5xl/tight lg:text-[64px] lg:leading-tight tracking-wider uppercase font-black mb-10 sm:mb-12 anim anim-up duration-500" data-anim>
       Решаем <br> налоговые <br class="xl:hidden"> споры
     </h1>
-    <ul class="flex flex-col gap-1.5 font-bold sm:text-lg lg:text-xl mb-24 anim anim-up duration-500 delay-100" data-anim>
+    <ul class="flex flex-col gap-1.5 font-bold sm:text-lg lg:text-xl mb-20 xl:mb-24 anim anim-up duration-500 delay-100" data-anim>
       <% _.forEach((primal), (item) => { %>
       <li class="flex items-center">
         <div class="w-3 mr-3 shrink-0 sm:w-4 sm:mr-6">
@@ -82,7 +82,7 @@
           <div class="absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
             <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
           </div>
-          <button class="text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light">Оставить заявку</button>
+          <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Оставить заявку</button>
         </div>
       </div>
     </div>
@@ -146,7 +146,7 @@
 
 <!-- В каких ситуациях мы помогаем? -->
 
-<section class="container relative">
+<section class="container relative" id="services">
   <div class="absolute top-64 md:top-72 right-0 h-[610px] md:h-auto md:-bottom-44 w-44 md:w-96 bg-grey">
     <%= loader %>
     <picture>
@@ -353,7 +353,7 @@
                   <%= error({text: 'Заполните это поле'}) %>
                 </div>
               </label>
-              <button class="text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" type="submit">Оставить заявку</button>
+              <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
             </div>
           </form>
         </div>
@@ -364,13 +364,13 @@
 
 <!-- Последние кейсы -->
 
-<section class="container overflow-hidden">
+<section class="container overflow-hidden" id="cases">
   <%= title({text: 'Последние кейсы', className: 'mb-8 sm:mb-12 lg:mb-16 anim anim-up duration-500', data: 'data-anim'}) %>
   <div class="relative" data-slider="cases">
     <div class="swiper w-full lg:max-w-[800px] xl:max-w-[960px] lg:mx-auto" data-slider-swiper="cases">
       <div class="swiper-wrapper">
         <% for (var i = 0; i < 6; i++) { %>
-        <div class="h-auto swiper-slide group/slide">
+        <div class="h-auto overflow-hidden swiper-slide rounded-xl">
           <div class="card">
             <div class="card-content">
               <ul class="flex flex-col gap-5 px-5 pt-16 pb-5 sm:px-7 lg:px-10 lg:pt-10 sm:pb-7 lg:pb-10 sm:gap-8">
@@ -409,7 +409,6 @@
                 </p>
               </div>
             </div>
-            <div class="absolute inset-0 bg-black/15 duration-100 group-[.swiper-slide-active]/slide:opacity-0 group-[.swiper-slide-active]/slide:invisible"></div>
           </div>
         </div>
         <% } %>
@@ -436,6 +435,56 @@
       </div>
     </div>
     <% } %>
+  </div>
+</section>
+
+<!-- Налоги — это то, в чем мы разбираемся лучше всего -->
+
+<section class="container relative pb-0 lg:overflow-hidden">
+  <div class="absolute inset-0 bg-grey">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/consultation-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+      <source srcset="img/pictures/consultation-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <source srcset="img/pictures/consultation-bg-mobile.webp" type="image/webp">
+      <img class="image md:object-top" draggable="false" loading="lazy" src="img/pictures/consultation-bg-mobile.jpg" alt="">
+    </picture>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Налоги — это то, в чем мы разбираемся лучше всего', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="w-full lg:max-w-[540px] container max-lg:pb-0 pt-0 lg:pt-24 px-0 lg:ml-auto">
+      <div class="duration-500 lg:mb-16 anim anim-right lg:anim-left" data-anim>
+        <div class="bg-transparent border border-solid shadow-2xl card gradient-glass backdrop-blur-sm border-white/20">
+          <div class="px-5 py-5 sm:px-7 lg:px-10 card-content">
+            <div class="sm:text-lg lg:text-xl">
+              <p>
+                Наш фокус — безопасность и комфорт предприятия, собственника и его команды.
+              </p>
+              <br>
+              <p>
+                Многолетний опыт и сотни кейсов позволяют разрешать споры и находить выход из любой ситуации.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative -mt-5 lg:mt-0 ml-auto lg:ml-0 sm:mr-auto lg:mr-0 -mb-2 lg:mb-0 lg:absolute lg:-left-40 xl:left-0 lg:bottom-0 w-full max-w-[280px] sm:max-w-[500px] anim anim-right duration-500" data-anim>
+        <%= picture({src: 'img/pictures/consultation-img', format: 'png', className: 'block w-full', data: null}) %>
+        <div class="absolute inset-0 flex items-end justify-end px-2 py-5 md:py-3 md:px-3">
+          <div class="text-right text-white">
+            <h4 class="font-bold sm:text-lg lg:text-xl">
+              Родионов Иван Игоревич
+            </h4>
+            <p>
+              управляющий партнер
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="duration-500 shadow-2xl anim anim-right lg:anim-left rounded-xl" data-anim>
+        <button class="w-full px-4 text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Получить консультацию</button>
+      </div>
+    </div>
   </div>
 </section>
 
