@@ -51,19 +51,28 @@ export const createСasesSlider = (): void => {
       prevEl: prev,
       nextEl: next,
     },
-    effect: 'cards',
+    effect:
+      (document.documentElement as HTMLHtmlElement).clientWidth < media.lg
+        ? 'slide'
+        : 'cards',
     slidesPerView: 1,
     slidesPerGroup: 1,
+    spaceBetween: 16,
     grabCursor: true,
     watchSlidesProgress: true,
+    autoHeight: true,
+    loop: true,
     cardsEffect: {
       perSlideOffset: 8,
       rotate: false,
     },
     breakpoints: {
       [media.lg]: {
+        spaceBetween: 0,
         grabCursor: false,
         allowTouchMove: false,
+        autoHeight: false,
+        loop: false,
       },
     },
   }) as Swiper
