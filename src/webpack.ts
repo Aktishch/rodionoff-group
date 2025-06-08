@@ -2,6 +2,7 @@ import fancybox from './ts/fancybox'
 import sliderSwiper from './ts/slider-swiper'
 import scrollHeader from './ts/scroll-header'
 import currentTab from './ts/current-tab'
+import cookie from './ts/cookie'
 import sidebar from './ts/sidebar'
 import menu from './ts/menu'
 import scrollTo from './ts/scroll-to'
@@ -21,6 +22,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   fancybox()
   sliderSwiper()
   currentTab()
+  cookie()
   scrollHeader()
   sidebar()
   menu()
